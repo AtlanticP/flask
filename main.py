@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -11,6 +11,10 @@ def bacon():
 	if request.method == 'POST':
 		return 'Method used: {}'.format(request.method)
 	return 'Method used: {}'.format(request.method)
+
+@app.route("/profile/<name>")
+def profile(name):
+	return render_template('index.html', name=name)
 
 
 # @app.route('/about/')

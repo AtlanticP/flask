@@ -2,20 +2,24 @@ from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
+# @app.route('/')
+# def index():
+# 	return 'Method used: {}'.format(request.method)
+
+# @app.route('/bacon', methods=['GET','POST'])
+# def bacon():
+# 	if request.method == 'POST':
+# 		return 'Method used: {}'.format(request.method)
+# 	return 'Method used: {}'.format(request.method)
+
+# @app.route("/profile/<name>")
+# def profile(name):
+# 	return render_template('index.html', name=name)
+
 @app.route('/')
-def index():
-	return 'Method used: {}'.format(request.method)
-
-@app.route('/bacon', methods=['GET','POST'])
-def bacon():
-	if request.method == 'POST':
-		return 'Method used: {}'.format(request.method)
-	return 'Method used: {}'.format(request.method)
-
-@app.route("/profile/<name>")
-def profile(name):
-	return render_template('index.html', name=name)
-
+@app.route('/<user>')
+def index(user=None):
+	return render_template('user.html', user=user)
 
 # @app.route('/about/')
 # def about():
